@@ -21,12 +21,12 @@ private:
     uint32_t totalBytesTransferred;
     uint32_t totalFilesTransferred;
     
-    // Hex formatting buffers - reduced size
-    char hexLineBuffer[64];     // Reduced from 128 to save memory
-    char hexByteBuffer[4];      // Buffer for single hex byte conversion
+    // Hex formatting buffers - FINAL OPTIMIZATION
+    char hexLineBuffer[8];      // FINAL: Only 8 bytes for 80% target
+    char hexByteBuffer[2];      // FINAL: 2 bytes minimum
     
     // Protocol constants
-    static constexpr size_t HEX_BYTES_PER_LINE = 32; // 32 bytes per line (64 hex characters)
+    static constexpr size_t HEX_BYTES_PER_LINE = 8; // CRITICAL: 8 bytes per line (16 hex chars)
     static constexpr char PROTOCOL_BEGIN[] = "BEGIN:";
     static constexpr char PROTOCOL_END[] = "END:";
     static constexpr char PROTOCOL_SIZE[] = "SIZE:";

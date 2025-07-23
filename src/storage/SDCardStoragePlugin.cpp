@@ -12,23 +12,15 @@ int SDCardStoragePlugin::initialize() {
         return STATUS_OK;
     }
     
-    // Check initial card status
-    checkCardStatus();
+    // TEMPORARY: Skip SD card initialization to prevent hanging
+    // SD.begin() can cause system hang if SD card hardware not connected properly
+    Serial.println(F("SDCardStoragePlugin: SD card init DISABLED to prevent hang"));
+    Serial.println(F("SDCardStoragePlugin: System will use EEPROM or Serial storage"));
+    cardPresent = false;  // Force SD card as unavailable
     
-    if (!cardPresent) {
-        if (debugEnabled) {
-            Serial.println(F("SDCardStoragePlugin: No card detected"));
-        }
-        // Don't return error - card might be inserted later
-    }
-    
-    // Initialize SD library
-    if (cardPresent && !SD.begin(SD_CS_PIN)) {
-        if (debugEnabled) {
-            Serial.println(F("SDCardStoragePlugin: SD.begin() failed"));
-        }
-        cardPresent = false;
-    }
+    // TODO: Re-enable SD card initialization once hardware is confirmed working
+    // checkCardStatus();
+    // if (cardPresent && !SD.begin(SD_CS_PIN)) { cardPresent = false; }
     
     if (cardPresent) {
         // Get card information

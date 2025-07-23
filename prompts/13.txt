@@ -1,0 +1,60 @@
+=====================================
+MegaDeviceBridge v1.0
+Tektronix TDS2024 Data Acquisition
+Serial: 115200 8N1
+=====================================
+Starting initialization...
+FileSystemManager: Initializing SD card plugin...
+SDCardStoragePlugin: SD card init DISABLED to prevent hang
+SDCardStoragePlugin: System will use EEPROM or Serial storage
+FileSystemManager: SD card plugin OK
+FileSystemManager: Initializing EEPROM plugin...
+FileSystemManager: EEPROM plugin OK
+FileSystemManager: Initializing Serial plugin...
+FileSystemManager: Serial plugin OK
+DisplayManager: LCD initialized with hardware reset
+LCD should show: 'MegaDeviceBridge' on line 1, 'Initializing...' on line 2
+System initialization complete
+Available RAM: 1195 bytes
+Active storage: EEPROM
+Note: EEPROM failure is OK - system uses SD card or Serial
+System ready - self-test disabled for memory
+Setup complete - entering main loop
+System ready for TDS2024 data capture
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Performance: 621.50 loops/sec
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Performance: 844.00 loops/sec
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Performance: 843.90 loops/sec
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Performance: 844.00 loops/sec
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Performance: 844.00 loops/sec
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Performance: 843.90 loops/sec
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Performance: 844.00 loops/sec
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1195B
+Captured 1 bytes to d
+Captured 1 bytes to d
+Captured 1 bytes to d
+Captured 1 bytes to d
+Captured 1 bytes to d
+Captured 1 bytes to d
+Warning: Partial write or write failed
+Status - Bytes: 881, Overflows: 727, Buffer: 100%, RAM: 1195B
+Warning: Partial write or write failed
+Performance: 321.20 loops/sec
+Status - Bytes: 2415, Overflows: 2009, Buffer: 68%, RAM: 1195B
+Warning: Parallel port buffer overflow
+Status - Bytes: 2839, Overflows: 2356, Buffer: 0%, RAM: 1195B
+Performance: 694.70 loops/sec
+Status - Bytes: 2839, Overflows: 2356, Buffer: 0%, RAM: 1195B
+Status - Bytes: 2839, Overflows: 2356, Buffer: 0%, RAM: 1195B

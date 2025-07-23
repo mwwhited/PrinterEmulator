@@ -1,0 +1,2 @@
+the LCD Just says Line1: Syste   Line2: RAM:   
+when I hit the print button the LCD flashes between ERROR Write and ERROR Buffe

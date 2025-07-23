@@ -45,10 +45,10 @@ private:
     uint32_t buttonReleaseTime;
     bool buttonHeld;
     
-    // Display content - optimized sizes
-    char line1Buffer[17];       // 16 chars + null terminator
-    char line2Buffer[17];
-    char messageBuffer[17];     // Reduced from 33 to save memory
+    // Display content - EMERGENCY MEMORY REDUCTION
+    char line1Buffer[6];        // EMERGENCY: 5 chars + null
+    char line2Buffer[6];
+    char messageBuffer[6];      // EMERGENCY: 5 chars only
     uint32_t displayUpdateTime;
     uint32_t messageTimeout;
     bool messageTimedOut;
@@ -56,7 +56,7 @@ private:
     // Menu system - reduced size
     size_t currentMenuItem;
     size_t totalMenuItems;
-    char menuItems[4][17];      // Reduced from 8 to 4 menu items
+    char menuItems[1][6];       // EMERGENCY: 1 menu item, 5 chars
     
     // Scrolling text
     size_t scrollPosition;

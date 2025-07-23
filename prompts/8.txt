@@ -1,0 +1,8 @@
+LEDs are flashing with this on the serial connection
+=====================================
+MegaDeviceBridge v1.0
+Tektronix TDS2024 Data Acquisition
+Serial: 115200 8N1
+=====================================
+Starting initialization...
+FileSystemManager: EEPROM plugin init failed

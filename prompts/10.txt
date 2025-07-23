@@ -1,0 +1,104 @@
+
+=====================================
+MegaDeviceBridge v1.0
+Tektronix TDS2024 Data Acquisition
+Serial: 115200 8N1
+=====================================
+Starting initialization...
+Initializing I2C...
+I2C initialized
+Registering storage plugins...
+Storage plugins registered
+Registering components with ServiceLocator...
+Components registered with ServiceLocator
+Starting component initialization...
+Initializing component: ParallelPortManager
+Component OK: ParallelPortManager
+Initializing component: FileSystemManager
+P
+=====================================
+MegaDeviceBridge v1.0
+Tektronix TDS2024 Data Acquisition
+Serial: 115200 8N1
+=====================================
+Starting initialization...
+Initializing I2C...
+I2C initialized
+Registering storage plugins...
+Storage plugins registered
+Registering components with ServiceLocator...
+Components registered with ServiceLocator
+Starting component initialization...
+Initializing component: ParallelPortManager
+Component OK: ParallelPortManager
+Initializing component: FileSystemManager
+P
+=====================================
+MegaDeviceBridge v1.0
+Tektronix TDS2024 Data Acquisition
+Serial: 115200 8N1
+=====================================
+Starting initialization...
+Initializing I2C...
+I2C initialized
+Registering storage plugins...
+Storage plugins registered
+Registering components with ServiceLocator...
+Components registered with ServiceLocator
+Starting component initialization...
+Initializing component: ParallelPortManager
+Component OK: ParallelPortManager
+Initializing component: FileSystemManager
+P
+=====================================
+MegaDeviceBridge v1.0
+Tektronix TDS2024 Data Acquisition
+Serial: 115200 8N1
+=====================================
+Starting initialization...
+Initializing I2C...
+I2C initialized
+Registering storage plugins...
+Storage plugins registered
+Registering components with ServiceLocator...
+Components registered with ServiceLocator
+Starting component initialization...
+Initializing component: ParallelPortManager
+Component OK: ParallelPortManager
+Initializing component: FileSystemManager
+P
+=====================================
+MegaDeviceBridge v1.0
+Tektronix TDS2024 Data Acquisition
+Serial: 115200 8N1
+=====================================
+Starting initialization...
+Initializing I2C...
+I2C initialized
+Registering storage plugins...
+Storage plugins registered
+Registering components with ServiceLocator...
+Components registered with ServiceLocator
+Starting component initialization...
+Initializing component: ParallelPortManager
+Component OK: ParallelPortManager
+Initializing component: FileSystemManager
+P
+=====================================
+MegaDeviceBridge v1.0
+Tektronix TDS2024 Data Acquisition
+Serial: 115200 8N1
+=====================================
+Starting initialization...
+Initializing I2C...
+I2C initialized
+Registering storage plugins...
+Storage plugins registered
+Registering components with ServiceLocator...
+Components registered with ServiceLocator
+Starting component initialization...
+Initializing component: ParallelPortManager
+Component OK: ParallelPortManager
+Initializing component: FileSystemManager
+P
+---- Closed the serial port COM3 ----

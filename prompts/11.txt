@@ -1,0 +1,39 @@
+ParallelPortManager: Buffer overflow detected
+Captured 8 bytes to data_
+Status - Bytes: 1478688768, Overflows: 2232811520, Buffer: 166%, RAM: 8456B
+Warning: Parallel port buffer overflow
+ParallelPortManager: Buffer overflow detected
+Captured 5 bytes to data_
+SYSTEM ERROR 2: Component update failed
+ParallelPortManager: Buffer overflow detected
+Captured 8 bytes to data_
+Status - Bytes: 537002260, Overflows: 153092609, Buffer: 118%, RAM: 8456B
+Warning: Parallel port buffer overflow
+Performance: 0.60 loops/sec
+ParallelPortManager: Buffer overflow detected
+Captured 5 bytes to data_
+SYSTEM ERROR 2: Component update failed
+ParallelPortManager: Buffer overflow detected
+Captured 8 bytes to data_
+Status - Bytes: 537002260, Overflows: 102772224, Buffer: 118%, RAM: 8456B
+Warning: Parallel port buffer overflow
+ParallelPortManager: Buffer overflow detected
+Captured 5 bytes to data_
+SYSTEM ERROR 2: Component update failed
+ParallelPortManager: Buffer overflow detected
+Captured 8 bytes to data_
+Status - Bytes: 5644564, Overflows: 537002248, Buffer: 118%, RAM: 8456B
+Warning: Parallel port buffer overflow
+Performance: 0.60 loops/sec
+ParallelPortManager: Buffer overflow detected
+Captured 5 bytes to data_
+SYSTEM ERROR 2: Component update failed
+ParallelPortManager: Buffer overflow detected
+Captured 8 bytes to data_
+Status - Bytes: 537002260, Overflows: 554106893, Buffer: 118%, RAM: 8456B
+Warning: Parallel port buffer overflow
+ParallelPortManager: Buffer overflow detected
+Captured 5 bytes to data_
+SYSTEM ERROR 2: Component update failed
+ParallelPortManager: Buffer overflow detected
+---- Closed the serial port COM3 ----

@@ -1,0 +1,32 @@
+from serial
+---- Opened the serial port COM3 ----
+ing main loop
+System ready for TDS2024 data capture
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1265B
+
+=====================================
+MegaDeviceBridge v1.0
+Tektronix TDS2024 Data Acquisition
+Serial: 115200 8N1
+=====================================
+Starting initialization...
+DisplayManager: LCD initialized with hardware reset
+LCD should show: 'MegaDeviceBridge' on line 1, 'Initializing...' on line 2
+System initialization complete
+Available RAM: 1265 bytes
+System ready - self-test disabled for memory
+Setup complete - entering main loop
+System ready for TDS2024 data capture
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1265B
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1265B
+Performance: 623.30 loops/sec
+---- Sent utf8 encoded message: "help" ----
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1265B
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1265B
+Performance: 844.20 loops/sec
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1265B
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1265B
+Performance: 844.10 loops/sec
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1265B
+Performance: 844.10 loops/sec
+Status - Bytes: 0, Overflows: 0, Buffer: 0%, RAM: 1265B

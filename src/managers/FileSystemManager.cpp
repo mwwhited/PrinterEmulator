@@ -30,22 +30,31 @@ int FileSystemManager::initialize() {
         return STATUS_ERROR;
     }
     
-    // Initialize all plugins
+    // Initialize all plugins with debugging
     int result;
     
+    Serial.println(F("FileSystemManager: Initializing SD card plugin..."));
     result = sdCardPlugin->initialize();
-    if (result != STATUS_OK && debugEnabled) {
+    if (result != STATUS_OK) {
         Serial.println(F("FileSystemManager: SD card plugin init failed"));
+    } else {
+        Serial.println(F("FileSystemManager: SD card plugin OK"));
     }
     
+    Serial.println(F("FileSystemManager: Initializing EEPROM plugin..."));
     result = eepromPlugin->initialize();
-    if (result != STATUS_OK && debugEnabled) {
+    if (result != STATUS_OK) {
         Serial.println(F("FileSystemManager: EEPROM plugin init failed"));
+    } else {
+        Serial.println(F("FileSystemManager: EEPROM plugin OK"));
     }
     
+    Serial.println(F("FileSystemManager: Initializing Serial plugin..."));
     result = serialPlugin->initialize();
-    if (result != STATUS_OK && debugEnabled) {
+    if (result != STATUS_OK) {
         Serial.println(F("FileSystemManager: Serial plugin init failed"));
+    } else {
+        Serial.println(F("FileSystemManager: Serial plugin OK"));
     }
     
     // Auto-detect best available storage

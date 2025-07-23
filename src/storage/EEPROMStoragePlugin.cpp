@@ -19,12 +19,20 @@ int EEPROMStoragePlugin::initialize() {
     
     // Check JEDEC ID to verify chip presence
     uint32_t jedecId = getJEDECID();
-    if (jedecId != 0xEF4018) { // W25Q128 JEDEC ID
-        if (debugEnabled) {
-            Serial.print(F("EEPROMStoragePlugin: Invalid JEDEC ID: 0x"));
-            Serial.println(jedecId, HEX);
-        }
+    if (jedecId == 0x000000 || jedecId == 0xFFFFFF) {
+        // No chip detected or communication failure
+        Serial.print(F("EEPROMStoragePlugin: No chip detected (JEDEC: 0x"));
+        Serial.print(jedecId, HEX);
+        Serial.println(F(") - using SD card or Serial storage"));
         return STATUS_ERROR;
+    }
+    
+    if (jedecId != 0xEF4018) {
+        // Different chip detected - warn but try to continue
+        Serial.print(F("EEPROMStoragePlugin: Non-standard chip (JEDEC: 0x"));
+        Serial.print(jedecId, HEX);
+        Serial.println(F(") - may not work correctly"));
+        // Continue anyway - might be compatible
     }
     
     // Load directory from EEPROM

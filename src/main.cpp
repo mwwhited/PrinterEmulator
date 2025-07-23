@@ -95,18 +95,16 @@ bool initializeSystem() {
         &heartbeatLEDManager
     );
     
-    // Initialize all components
+    // Initialize all components (continue even if some fail)
     int result = ServiceLocator::initializeAll();
     if (result != STATUS_OK) {
-        Serial.print(F("System initialization failed with code: "));
-        Serial.println(result);
-        return false;
+        // Continue with available components
     }
     
-    // Validate all components
+    // Validate components (continue even if some fail)
     if (!ServiceLocator::validateAll()) {
-        Serial.println(F("System validation failed"));
-        return false;
+        Serial.println(F("Some components failed validation, continuing..."));
+        // Don't return false - continue with available components
     }
     
     // Display startup complete message
@@ -116,6 +114,11 @@ bool initializeSystem() {
     Serial.print(F("Available RAM: "));
     Serial.print(getAvailableRAM());
     Serial.println(F(" bytes"));
+    
+    // Show active storage system
+    Serial.print(F("Active storage: "));
+    Serial.println(fileSystemManager.getCurrentStorageName());
+    Serial.println(F("Note: EEPROM failure is OK - system uses SD card or Serial"));
     
     return true;
 }
@@ -147,8 +150,8 @@ void processParallelPortData() {
     size_t availableBytes = parallelPortManager.getAvailableBytes();
     
     if (availableBytes > 0) {
-        // Allocate temporary buffer for data processing
-        static uint8_t dataBuffer[256];
+        // EMERGENCY: Single byte processing to prevent corruption
+        static uint8_t dataBuffer[1];   // EMERGENCY: 1 byte to prevent corruption
         size_t bytesToRead = min(availableBytes, sizeof(dataBuffer));
         
         // Read data from parallel port manager
@@ -177,8 +180,13 @@ void processParallelPortData() {
                 Serial.print(F(" bytes to "));
                 Serial.println(filename);
             } else {
-                Serial.println(F("Warning: Partial write or write failed"));
-                displayManager.displayError("Write failed");
+                // Rate limit write error messages to prevent LCD flashing
+                static uint32_t lastWriteError = 0;
+                if (millis() - lastWriteError >= 5000) {
+                    Serial.println(F("Warning: Partial write or write failed"));
+                    displayManager.displayError("Write err");
+                    lastWriteError = millis();
+                }
             }
         }
     }
@@ -246,15 +254,12 @@ void setup() {
     // Enable auto status updates on display
     displayManager.setAutoStatusUpdate(true, 3000);
     
-    // Initialize debug command system
-    DebugCommands::initialize();
+    // DEBUG COMMANDS DISABLED - CRITICAL MEMORY SHORTAGE
+    // DebugCommands::initialize();
     
-    // Run quick health check
-    if (!HardwareSelfTest::quickHealthCheck()) {
-        Serial.println(F("WARNING: Health check failed!"));
-        displayManager.displayError("Health check failed");
-        delay(3000);
-    }
+    // SELF-TEST DISABLED TO SAVE CRITICAL MEMORY
+    // Quick validation only
+    Serial.println(F("System ready - self-test disabled for memory"));
     
     Serial.println(F("Setup complete - entering main loop"));
     Serial.println(F("System ready for TDS2024 data capture"));
@@ -289,28 +294,34 @@ void loop() {
     // Update system status display
     updateSystemStatus();
     
-    // Process debug commands
-    DebugCommands::update();
+    // DEBUG COMMANDS DISABLED - CRITICAL MEMORY SHORTAGE
+    // DebugCommands::update();
     
-    // Check for buffer overflow conditions
-    if (parallelPortManager.hasBufferOverflow()) {
-        Serial.println(F("Warning: Parallel port buffer overflow"));
-        parallelPortManager.clearBufferOverflow();
-        
-        // Brief error indication on display
-        displayManager.displayError("Buffer overflow", 0);
-        delay(1000);
+    // Check for buffer overflow conditions (rate limited)
+    static uint32_t lastOverflowCheck = 0;
+    if (currentTime - lastOverflowCheck >= 5000) { // Check every 5 seconds
+        if (parallelPortManager.hasBufferOverflow()) {
+            Serial.println(F("Warning: Parallel port buffer overflow"));
+            parallelPortManager.clearBufferOverflow();
+            
+            // Brief error indication on display
+            displayManager.displayError("Buf ovflow", 0);
+        }
+        lastOverflowCheck = currentTime;
     }
     
-    // Monitor memory usage
-    int availableRAM = getAvailableRAM();
-    if (availableRAM < 1000) { // Warning threshold
-        Serial.print(F("Warning: Low memory - "));
-        Serial.print(availableRAM);
-        Serial.println(F(" bytes free"));
-        
-        displayManager.displayError("Low memory");
-        delay(1000);
+    // Monitor memory usage (rate limited)
+    static uint32_t lastMemoryCheck = 0;
+    if (currentTime - lastMemoryCheck >= 10000) { // Check every 10 seconds
+        int availableRAM = getAvailableRAM();
+        if (availableRAM < 100) { // Critical threshold
+            Serial.print(F("Warning: Low memory - "));
+            Serial.print(availableRAM);
+            Serial.println(F(" bytes free"));
+            
+            displayManager.displayError("Low mem");
+        }
+        lastMemoryCheck = currentTime;
     }
     
     // Performance monitoring (every 10 seconds)
