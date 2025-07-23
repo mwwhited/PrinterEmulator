@@ -48,12 +48,12 @@ public:
 };
 
 // Button definitions
-#define BUTTON_NONE 1023
+#define BUTTON_NONE 255
 #define BUTTON_RIGHT 0
 #define BUTTON_UP 144
-#define BUTTON_DOWN 329
-#define BUTTON_LEFT 505
-#define BUTTON_SELECT 742
+#define BUTTON_DOWN 73
+#define BUTTON_LEFT 249
+#define BUTTON_SELECT 230
 
 // Status codes
 #define STATUS_OK 0

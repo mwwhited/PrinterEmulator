@@ -16,9 +16,13 @@
 #define STORAGE_EEPROM 1
 #define STORAGE_SERIAL 2
 
-// Emergency reduced constants
+// Emergency reduced constants - remove redefinition warnings
+#ifndef MAX_FILENAME_LENGTH
 #define MAX_FILENAME_LENGTH 2
+#endif
+#ifndef TRANSFER_BUFFER_SIZE  
 #define TRANSFER_BUFFER_SIZE 32
+#endif
 
 // Mock storage plugin interface
 class MockStoragePlugin {

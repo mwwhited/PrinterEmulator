@@ -1,6 +1,7 @@
 #include <unity.h>
 #include <stdint.h>
 #include <string.h>
+#include <cstdio>
 
 // Mock Arduino functions
 #define F(x) x
@@ -11,9 +12,13 @@
 #define STATUS_NOT_INITIALIZED 2
 #define STATUS_BUSY 3
 
-// Emergency reduced constants
+// Emergency reduced constants - remove redefinition warnings
+#ifndef MAX_FILENAME_LENGTH
 #define MAX_FILENAME_LENGTH 2
+#endif
+#ifndef TRANSFER_BUFFER_SIZE
 #define TRANSFER_BUFFER_SIZE 32
+#endif
 #define EEPROM_BLOCK_SIZE 32
 
 // Mock SPI and SD library functions

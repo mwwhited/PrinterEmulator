@@ -1,6 +1,7 @@
 #include <unity.h>
 #include <stdint.h>
 #include <string.h>
+#include <cstdio>
 
 // Mock Arduino functions
 #define F(x) x
@@ -153,17 +154,11 @@ private:
     }
 };
 
-// SOS pattern timing (in milliseconds)
+// SOS pattern timing (in milliseconds)  
 const uint16_t HeartbeatLEDManagerTest::SOS_PATTERN[9] = {
-    200, 200,   // S: dot
-    200, 200,   // S: dot  
-    200, 600,   // S: dot + pause
-    600, 200,   // O: dash
-    600, 200,   // O: dash
-    600, 600,   // O: dash + pause
-    200, 200,   // S: dot
-    200, 200,   // S: dot
-    200, 1000   // S: dot + long pause
+    200, 200, 200,   // S: dot dot dot
+    600, 600, 600,   // O: dash dash dash  
+    200, 200, 200    // S: dot dot dot
 };
 
 // ============================================================================

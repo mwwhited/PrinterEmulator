@@ -46,7 +46,9 @@ uint32_t mock_micros() {
 #define BUSY_PIN 43
 #define LPT_ACTIVITY_LED_PIN 30
 #define STROBE_INTERRUPT 5
+#ifndef RING_BUFFER_SIZE
 #define RING_BUFFER_SIZE 16
+#endif
 
 // Status codes
 #define STATUS_OK 0

@@ -4,7 +4,15 @@
       "Bash(mkdir:*)",
       "Bash(pio:*)",
       "Bash(rm:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(mv:*)",
+      "Bash(for:*)",
+      "Bash(do mv \"$file\" \"$file%_backup\")",
+      "Bash(done)",
+      "Bash(true)",
+      "Bash(cp:*)"
     ],
     "deny": []
   }
