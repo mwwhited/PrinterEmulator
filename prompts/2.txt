@@ -1,0 +1,2 @@
+continue though your checklist asking as few questions as possible.  I would let you know it is VERY IMPORTANT that you track your changes in a CHANGES.md, keep a copy of your task list in TODO.md and    │
+│   keep CLAUDE.md up-to-date with your memory. 

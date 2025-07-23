@@ -1,0 +1,1 @@
+read the application_design.md document.  create a list of tasks to build and implment this using platform io. 
