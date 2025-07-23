@@ -465,7 +465,7 @@ void DisplayManager::setAutoStatusUpdate(bool enabled, uint32_t updateInterval) 
 }
 
 void DisplayManager::setupMenu(const char* items[], size_t itemCount) {
-    if (!items || itemCount == 0 || itemCount > 8) {
+    if (!items || itemCount == 0 || itemCount > 4) {
         return;
     }
     
@@ -545,7 +545,6 @@ DisplayManager::ButtonType DisplayManager::getCurrentButton() const {
 
 DisplayManager::ButtonType DisplayManager::waitForButton(uint32_t timeoutMs) {
     uint32_t startTime = millis();
-    ButtonType initialButton = currentButton;
     
     // Wait for button release if one is currently pressed
     while (currentButton != BUTTON_NONE && (millis() - startTime) < timeoutMs) {
@@ -613,11 +612,11 @@ void DisplayManager::displayProgressBar(uint8_t percentage, uint8_t line, const 
     // Display progress bar (8 characters)
     for (uint8_t i = 0; i < 8; i++) {
         if (i < fullSegments) {
-            lcd.write(5); // Full character
+            lcd.write((uint8_t)5); // Full character
         } else if (i == fullSegments && partialSegment > 0) {
-            lcd.write(partialSegment); // Partial character
+            lcd.write((uint8_t)partialSegment); // Partial character
         } else {
-            lcd.write(0); // Empty character
+            lcd.write((uint8_t)0); // Empty character
         }
     }
 }
@@ -685,7 +684,7 @@ void DisplayManager::displayError(const char* errorMsg, int errorCode) {
     // Flash error pattern
     for (int i = 0; i < 3; i++) {
         lcd.setCursor(15, 0);
-        lcd.write(6); // Error pattern character
+        lcd.write((uint8_t)6); // Error pattern character
         delay(200);
         lcd.setCursor(15, 0);
         lcd.print(" ");

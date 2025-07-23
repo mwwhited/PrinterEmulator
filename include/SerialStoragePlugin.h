@@ -21,8 +21,8 @@ private:
     uint32_t totalBytesTransferred;
     uint32_t totalFilesTransferred;
     
-    // Hex formatting buffers
-    char hexLineBuffer[128];    // Buffer for hex line (64 bytes = 128 hex chars + formatting)
+    // Hex formatting buffers - reduced size
+    char hexLineBuffer[64];     // Reduced from 128 to save memory
     char hexByteBuffer[4];      // Buffer for single hex byte conversion
     
     // Protocol constants

@@ -5,6 +5,8 @@
 #include "HardwareConfig.h"
 #include "ServiceLocator.h"
 #include "MemoryUtils.h"
+#include "HardwareSelfTest.h"
+#include "DebugCommands.h"
 
 // Component includes
 #include "ParallelPortManager.h"
@@ -228,7 +230,18 @@ void setup() {
     // Enable auto status updates on display
     displayManager.setAutoStatusUpdate(true, 3000);
     
+    // Initialize debug command system
+    DebugCommands::initialize();
+    
+    // Run quick health check
+    if (!HardwareSelfTest::quickHealthCheck()) {
+        Serial.println(F("WARNING: Health check failed!"));
+        displayManager.displayError("Health check failed");
+        delay(3000);
+    }
+    
     Serial.println(F("Setup complete - entering main loop"));
+    Serial.println(F("System ready for TDS2024 data capture"));
 }
 
 /**
@@ -259,6 +272,9 @@ void loop() {
     
     // Update system status display
     updateSystemStatus();
+    
+    // Process debug commands
+    DebugCommands::update();
     
     // Check for buffer overflow conditions
     if (parallelPortManager.hasBufferOverflow()) {

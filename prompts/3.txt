@@ -1,0 +1,1 @@
+you have the ability to run `pio` for platform.io.  build the project yourself and add tests to make sure the device functions.

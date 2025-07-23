@@ -235,7 +235,7 @@ bool EEPROMStoragePlugin::saveDirectory() {
     return true;
 }
 
-FileEntry* EEPROMStoragePlugin::findFileEntry(const char* filename) {
+EEPROMStoragePlugin::FileEntry* EEPROMStoragePlugin::findFileEntry(const char* filename) {
     if (!filename) {
         return nullptr;
     }
@@ -250,7 +250,22 @@ FileEntry* EEPROMStoragePlugin::findFileEntry(const char* filename) {
     return nullptr;
 }
 
-FileEntry* EEPROMStoragePlugin::findEmptyEntry() {
+const EEPROMStoragePlugin::FileEntry* EEPROMStoragePlugin::findFileEntry(const char* filename) const {
+    if (!filename) {
+        return nullptr;
+    }
+    
+    for (size_t i = 0; i < MAX_FILES; i++) {
+        if (directory[i].status == STATUS_ACTIVE &&
+            equalsIgnoreCase(directory[i].filename, MAX_FILENAME_LENGTH, filename)) {
+            return &directory[i];
+        }
+    }
+    
+    return nullptr;
+}
+
+EEPROMStoragePlugin::FileEntry* EEPROMStoragePlugin::findEmptyEntry() {
     for (size_t i = 0; i < MAX_FILES; i++) {
         if (directory[i].status == STATUS_EMPTY || directory[i].status == STATUS_DELETED) {
             return &directory[i];
@@ -452,7 +467,7 @@ bool EEPROMStoragePlugin::fileExists(const char* filename) const {
 }
 
 uint32_t EEPROMStoragePlugin::getFileSize(const char* filename) const {
-    FileEntry* entry = findFileEntry(filename);
+    const FileEntry* entry = findFileEntry(filename);
     return entry ? entry->sizeBytes : 0;
 }
 

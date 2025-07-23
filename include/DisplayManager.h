@@ -45,18 +45,18 @@ private:
     uint32_t buttonReleaseTime;
     bool buttonHeld;
     
-    // Display content
+    // Display content - optimized sizes
     char line1Buffer[17];       // 16 chars + null terminator
     char line2Buffer[17];
-    char messageBuffer[33];     // For scrolling messages
+    char messageBuffer[17];     // Reduced from 33 to save memory
     uint32_t displayUpdateTime;
     uint32_t messageTimeout;
     bool messageTimedOut;
     
-    // Menu system
+    // Menu system - reduced size
     size_t currentMenuItem;
     size_t totalMenuItems;
-    char menuItems[8][17];      // Max 8 menu items, 16 chars each
+    char menuItems[4][17];      // Reduced from 8 to 4 menu items
     
     // Scrolling text
     size_t scrollPosition;

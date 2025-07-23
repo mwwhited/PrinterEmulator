@@ -1,6 +1,7 @@
 #include "MemoryUtils.h"
 #include <string.h>
 #include <ctype.h>
+#include <limits.h>
 
 size_t safeCopy(char* dest, size_t destSize, const char* src, size_t maxCopy) {
     if (!dest || !src || destSize == 0) {

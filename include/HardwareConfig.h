@@ -53,12 +53,12 @@
 // Interrupt Configuration
 #define LPT_STROBE_INTERRUPT    5   // Pin 18 = INT5 on Mega 2560
 
-// System Constants
-#define RING_BUFFER_SIZE        512
-#define COMMAND_BUFFER_SIZE     64
-#define EEPROM_BUFFER_SIZE      32
-#define TRANSFER_BUFFER_SIZE    256
-#define MAX_FILENAME_LENGTH     32
+// System Constants - Optimized for memory usage
+#define RING_BUFFER_SIZE        96   // Strict memory constraint
+#define COMMAND_BUFFER_SIZE     16   // Minimum for commands
+#define EEPROM_BUFFER_SIZE      16   // Minimum for EEPROM
+#define TRANSFER_BUFFER_SIZE    32   // Minimum transfer buffer
+#define MAX_FILENAME_LENGTH     8    // 8.3 format maximum
 
 // Timing Constants (microseconds)
 #define ACK_PULSE_WIDTH         20

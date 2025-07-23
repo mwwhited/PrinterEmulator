@@ -23,7 +23,7 @@ private:
     };
     
     static constexpr size_t FILE_ENTRY_SIZE = sizeof(FileEntry);
-    static constexpr size_t MAX_FILES = 64;  // Maximum files in filesystem
+    static constexpr size_t MAX_FILES = 32;  // Reduced from 64 to save memory
     static constexpr uint32_t DIRECTORY_SECTOR = 0; // First sector for directory
     static constexpr uint32_t DATA_START_SECTOR = 1; // First data sector
     static constexpr uint32_t TOTAL_SECTORS = EEPROM_SIZE / EEPROM_SECTOR_SIZE;
@@ -128,6 +128,7 @@ private:
      * @return Pointer to file entry or nullptr if not found
      */
     FileEntry* findFileEntry(const char* filename);
+    const FileEntry* findFileEntry(const char* filename) const;
     
     /**
      * Find empty file entry slot

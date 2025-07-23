@@ -118,7 +118,7 @@ void SerialStoragePlugin::sendHexLine(const uint8_t* data, size_t size, uint32_t
     // Add address prefix (optional, for debugging)
     if (debugEnabled) {
         char addrStr[10];
-        snprintf(addrStr, sizeof(addrStr), "%08X: ", address);
+        snprintf(addrStr, sizeof(addrStr), "%08lX: ", (unsigned long)address);
         safeCopy(hexLineBuffer, sizeof(hexLineBuffer), addrStr);
     }
     
