@@ -35,23 +35,44 @@ int DisplayManager::initialize() {
         return STATUS_OK;
     }
     
-    // Initialize LCD
+    // Hardware reset LCD with proper timing
+    pinMode(LCD_RESET_PIN, OUTPUT);
+    digitalWrite(LCD_RESET_PIN, LOW);
+    delay(50);  // Hold reset for 50ms
+    digitalWrite(LCD_RESET_PIN, HIGH);
+    delay(100); // Wait for LCD to stabilize
+    
+    // Initialize LCD with explicit timing
     lcd.begin(16, 2);
+    delay(50);  // Allow LCD to initialize
+    
+    // Clear display multiple times to ensure it's clean
+    lcd.clear();
+    delay(10);
+    lcd.clear();
+    delay(10);
+    
+    // Set cursor to home position
+    lcd.home();
+    delay(10);
     
     // Setup custom characters for progress bar
     setupProgressBarChars();
     
-    // Clear display
+    // Clear display again after custom characters
     clearDisplay();
     
-    // Display startup message
-    displayMessagePGM(F("MegaDeviceBridge"), F("Initializing..."), 2000);
+    // Display startup message with proper timing
+    lcd.setCursor(0, 0);
+    lcd.print(F("MegaDeviceBridge"));
+    lcd.setCursor(0, 1);
+    lcd.print(F("Initializing... "));
+    delay(1000); // Show message for 1 second
     
     initialized = true;
     
-    if (debugEnabled) {
-        Serial.println(F("DisplayManager: Initialized"));
-    }
+    Serial.println(F("DisplayManager: LCD initialized with hardware reset"));
+    Serial.println(F("LCD should show: 'MegaDeviceBridge' on line 1, 'Initializing...' on line 2"));
     
     return STATUS_OK;
 }

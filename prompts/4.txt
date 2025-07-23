@@ -1,0 +1,3 @@
+The firmware built and deployed but I get no response to the debug commands on the serial point.  The LCD was not reset at first but after I pushed the print button on the TDS2024 the screen changed to   │
+│   a bunched of inverted `P` characters and then the oscillioscope responded "printer not responding".  Please create more detailed tests covering the actual device functionality of each component model,    │
+│   make sure the LCD is initialized correctly and make sure the serial port is working and configured for 115200 8,n,1.   

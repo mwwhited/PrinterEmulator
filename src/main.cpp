@@ -54,13 +54,29 @@ static uint32_t loopCounter = 0;
  * @return true if initialization successful
  */
 bool initializeSystem() {
-    // Initialize serial communication first
-    Serial.begin(SERIAL_BAUD_RATE);
-    while (!Serial && millis() < 3000) {
-        // Wait for serial connection or timeout
+    // Initialize serial communication first with explicit configuration
+    Serial.begin(SERIAL_BAUD_RATE, SERIAL_8N1);
+    
+    // Ensure serial is ready before proceeding
+    while (!Serial && millis() < 5000) {
+        // Wait for serial connection with longer timeout
+        delay(10);
     }
     
-    Serial.println(F("MegaDeviceBridge v1.0 - Starting initialization..."));
+    // Clear any garbage in serial buffer
+    while (Serial.available()) {
+        Serial.read();
+    }
+    
+    // Send startup banner with proper line endings
+    Serial.println();
+    Serial.println(F("====================================="));
+    Serial.println(F("MegaDeviceBridge v1.0"));
+    Serial.println(F("Tektronix TDS2024 Data Acquisition"));
+    Serial.println(F("Serial: 115200 8N1"));
+    Serial.println(F("====================================="));
+    Serial.println(F("Starting initialization..."));
+    Serial.flush(); // Ensure all data is sent
     
     // Initialize I2C for RTC
     Wire.begin();

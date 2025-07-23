@@ -3,6 +3,7 @@
 #include "ServiceLocator.h"
 #include "MemoryUtils.h"
 #include "HardwareSelfTest.h"
+#include "HardwareComponentTests.h"
 #include "ParallelPortManager.h"
 #include "FileSystemManager.h"
 #include "DisplayManager.h"
@@ -55,6 +56,7 @@ void showHelp() {
     Serial.println(F("  validate      - Validate all components"));
     Serial.println(F("  restart       - Software restart"));
     Serial.println(F("  selftest      - Run hardware self-test"));
+    Serial.println(F("  hwtest        - Comprehensive hardware tests"));
     Serial.println();
     Serial.println(F("Storage Commands:"));
     Serial.println(F("  storage       - Show storage status"));
@@ -313,6 +315,8 @@ void processCommand(const char* cmd) {
         asm volatile ("  jmp 0");
     } else if (equalsIgnoreCase(cmd, safeStrlen(cmd, COMMAND_BUFFER_SIZE), "selftest")) {
         HardwareSelfTest::runCompleteSelfTest();
+    } else if (equalsIgnoreCase(cmd, safeStrlen(cmd, COMMAND_BUFFER_SIZE), "hwtest")) {
+        HardwareComponentTests::runComprehensiveTests();
     } else if (equalsIgnoreCase(cmd, safeStrlen(cmd, COMMAND_BUFFER_SIZE), "storage")) {
         showStorageStatus();
     } else if (equalsIgnoreCase(cmd, safeStrlen(cmd, COMMAND_BUFFER_SIZE), "parallel")) {
