@@ -1,2 +1,2 @@
-pio run -t clean -e test 
-pio test -e test -vvv
+pio run -e test -t clean
+pio test -e test 
